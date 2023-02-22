@@ -18,5 +18,3 @@ jobs:
           check-latest: true
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
-        with:
-          version: v3.4.0
