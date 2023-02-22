@@ -10,7 +10,9 @@ func main() {
 		panic(err)
 	}
 
-	defer logger.Sync()
+	defer func(logger *zap.Logger) {
+		_ = logger.Sync()
+	}(logger)
 
 	sugar := logger.Sugar()
 	sugar.Info("Welcome to FairJudge!")
