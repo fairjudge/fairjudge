@@ -1,9 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"go.uber.org/zap"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	logger, err := zap.NewProduction()
+	if err != nil {
+		panic(err)
+	}
+
+	defer logger.Sync()
+
+	sugar := logger.Sugar()
+	sugar.Info("Welcome to FairJudge!")
 }
